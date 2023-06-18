@@ -34,7 +34,7 @@ const Categories = () => {
         Collectibles, Rentables and Buyables. All sorts of NFTs will be
         available.
       </h4>
-        <Row xs={2} md={2} lg={5} className="g-4 py-5">
+        <Row xs={2} md={2} lg={5} className="g-4 py-5" style={{justifyContent: "center"}}>
           {/* <Col> */}
           <Card style={{backgroundColor: "#64DFDF"}}className="category">
             <h3 className="categoryname">
