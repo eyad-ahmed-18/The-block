@@ -94,7 +94,7 @@ function App() {
           <Navigation web3Handler={web3Handler} account={account} />
         </>
         <div>
-          {/* {loading ? (
+          {loading ? (
             <div
               style={{
                 display: "flex",
@@ -106,7 +106,7 @@ function App() {
               <Spinner animation="grow" style={{ display: "flex" }} />
               <p className="mx-3 my-0">Connect your E-Wallet...</p>
             </div>
-          ) : ( */}
+          ) : (
           <Routes>
             <Route
               path="/"
@@ -158,7 +158,7 @@ function App() {
               element={<NFTForm marketplace={marketplace} nft={nft} />}
             />
           </Routes>
-           {/* )} */}
+           )}
         </div>
       </div>
     </BrowserRouter>
