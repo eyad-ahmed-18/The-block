@@ -94,19 +94,19 @@ function App() {
           <Navigation web3Handler={web3Handler} account={account} />
         </>
         <div>
-          {loading ? (
-            <div
-              style={{
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
-                minHeight: "80vh",
-              }}
-            >
-              <Spinner animation="grow" style={{ display: "flex" }} />
-              <p className="mx-3 my-0">Connect your E-Wallet...</p>
-            </div>
-          ) : (
+//           {loading ? (
+//             <div
+//               style={{
+//                 display: "flex",
+//                 justifyContent: "center",
+//                 alignItems: "center",
+//                 minHeight: "80vh",
+//               }}
+//             >
+//               <Spinner animation="grow" style={{ display: "flex" }} />
+//               <p className="mx-3 my-0">Connect your E-Wallet...</p>
+//             </div>
+//           ) : (
             <Routes>
               <Route
                 path="/"
@@ -155,7 +155,7 @@ function App() {
               <Route path="/carrental" element={<CarRental />} />
               <Route path="/nftform" element={<NFTForm marketplace={marketplace} nft={nft}/>} />
             </Routes>
-          )}
+//           )}
         </div>
       </div>
     </BrowserRouter>
