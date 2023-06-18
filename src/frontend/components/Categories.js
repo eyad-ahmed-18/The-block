@@ -36,12 +36,6 @@ const Categories = () => {
       </h4>
         <Row xs={2} md={2} lg={5} className="g-4 py-5">
           {/* <Col> */}
-          <Card className="category">
-            <h3 className="categoryname">
-              CAR
-              <br /> RENTAL
-            </h3>
-          </Card>
           <Card style={{backgroundColor: "#64DFDF"}}className="category">
             <h3 className="categoryname">
               SKILL
