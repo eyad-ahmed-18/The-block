@@ -104,7 +104,7 @@ function App() {
               }}
             >
               <Spinner animation="grow" style={{ display: "flex" }} />
-              <p className="mx-3 my-0">Connect your E-Wallet...</p>
+              <p className="mx-3 my-0">Connect your E-Wallet(Use Web or Metamask browser)...</p>
             </div>
           ) : (
           <Routes>
