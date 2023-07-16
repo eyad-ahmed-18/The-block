@@ -27,6 +27,7 @@ const Create = ({ marketplace, nft }) => {
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const [collectionName, setCollectionName] = useState("");
+  const [category, setCategory] = useState("");
 
   const uploadToIPFS = async (event) => {
     event.preventDefault();
@@ -43,10 +44,25 @@ const Create = ({ marketplace, nft }) => {
   };
 
   const createNFT = async () => {
-    if (!image || !price || !name || !description || !collectionName) return;
+    if (
+      !image ||
+      !price ||
+      !name ||
+      !category ||
+      !description ||
+      !collectionName
+    )
+      return;
     try {
       const result = await client.add(
-        JSON.stringify({ image, price, name, description, collectionName })
+        JSON.stringify({
+          image,
+          price,
+          name,
+          category,
+          description,
+          collectionName,
+        })
       );
       await mintThenList(result);
       navigate("/home"); // Route back to the home page after creating and listing the NFT
@@ -66,7 +82,13 @@ const Create = ({ marketplace, nft }) => {
     // add nft to marketplace
     const listingPrice = ethers.utils.parseEther(price.toString());
     await (
-      await marketplace.makeItem(collectionName, nft.address, id, listingPrice)
+      await marketplace.makeItem(
+        collectionName,
+        category,
+        nft.address,
+        id,
+        listingPrice
+      )
     ).wait();
   };
 
@@ -93,7 +115,7 @@ const Create = ({ marketplace, nft }) => {
                 size="lg"
                 required
                 type="text"
-                placeholder="Name"
+                placeholder="NFT Name"
               />
               <Form.Control
                 className="form"
@@ -103,6 +125,19 @@ const Create = ({ marketplace, nft }) => {
                 type="text"
                 placeholder="Collection Name"
               />
+              <Form.Select
+                className="form"
+                onChange={(e) => setCategory(e.target.value)}
+                size="lg"
+                required
+              >
+                <option value="">Select Category</option>
+                <option value="noCategory">Uncategorized</option>
+                <option value="Skill Sharing">Skill Sharing</option>
+                <option value="Collectibles">Collectibles</option>
+                <option value="Coworking Spaces">Coworking Spaces</option>
+                <option value="Entertainment">Entertainment</option>
+              </Form.Select>
               <Form.Control
                 className="form"
                 onChange={(e) => setDescription(e.target.value)}

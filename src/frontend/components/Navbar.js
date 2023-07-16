@@ -53,18 +53,10 @@ const Navigation = ({ web3Handler, account }) => {
               >
                 My Purchases
               </Nav.Link>
-              <Nav.Link
-                as={Link}
-                to="/categories"
-                onClick={handleNavbarToggle}
-              >
+              <Nav.Link as={Link} to="/categories" onClick={handleNavbarToggle}>
                 Sustainability
               </Nav.Link>
-              <Nav.Link
-                as={Link}
-                to="/launchpad"
-                onClick={handleNavbarToggle}
-              >
+              <Nav.Link as={Link} to="/launchpad" onClick={handleNavbarToggle}>
                 Launchpad
               </Nav.Link>
             </Nav>
@@ -82,9 +74,12 @@ const Navigation = ({ web3Handler, account }) => {
                 </Nav.Link>
               ) : (
                 <Button
-                  variant="outline-light"
                   className="connect-btn"
-                  onClick={web3Handler}
+                  variant="outline-light"
+                  onClick={() => {
+                    web3Handler();
+                    handleNavbarToggle(); // Close the navbar after connecting wallet
+                  }}
                 >
                   Connect Wallet
                 </Button>

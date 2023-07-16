@@ -23,7 +23,7 @@ const NFTForm = () => {
               action="https://formsubmit.co/eyadah18@gmail.com"
               method="POST"
             >
-              <input type="text" name="name" placeholder="Project Name" required />
+              <input type="text" name="name" placeholder="NFT Name" required />
               <input
                 class="form"
                 type="email"

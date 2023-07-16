@@ -77,11 +77,22 @@ const CollectionPage = ({ marketplace, nft }) => {
   return (
     <div className="flex justify-center">
       <div className="px-5 container">
-        <h1 style={{
-          display: "flex",
-          justifyContent: "center",
-        }}>Collection: {collectionName}</h1>
-        <Row xs={1} sm={2} md={2} lg={5} className="g-4 py-5" style={{padding: "20px"}}>
+        <h1
+          style={{
+            display: "flex",
+            justifyContent: "center",
+          }}
+        >
+          Collection: {collectionName}
+        </h1>
+        <Row
+          xs={1}
+          sm={2}
+          md={2}
+          lg={5}
+          className="g-4 py-5"
+          style={{ padding: "20px" }}
+        >
           {items.map((item, idx) => (
             <Col key={idx}>
               <Card class="nftCardss">

@@ -5,21 +5,20 @@ import { Link } from "react-router-dom";
 const Home = ({ marketplace, nft }) => {
   const [loading, setLoading] = useState(true);
   const [items, setItems] = useState([]);
+
   const loadMarketplaceItems = async () => {
-    // Load all unsold items
     const itemCount = await marketplace.itemCount();
     let items = [];
+
     for (let i = 1; i <= itemCount; i++) {
       const item = await marketplace.items(i);
+
       if (!item.sold) {
-        // get uri url from nft contract
         const uri = await nft.tokenURI(item.tokenId);
-        // use uri to fetch the nft metadata stored on ipfs
         const response = await fetch(uri);
         const metadata = await response.json();
-        // get total price of item (item price + fee)
         const totalPrice = await marketplace.getTotalPrice(item.itemId);
-        // Add item to items array
+
         items.push({
           totalPrice,
           collectionName: metadata.collectionName,
@@ -28,18 +27,27 @@ const Home = ({ marketplace, nft }) => {
           name: metadata.name,
           description: metadata.description,
           image: metadata.image,
+          createdAt: item.createdAt, // Add createdAt property to capture the item creation timestamp
         });
       }
     }
+
+    // Sort items by createdAt timestamp in descending order (latest first)
+    items.sort((a, b) => b.createdAt - a.createdAt);
+
     setLoading(false);
     setItems(items);
   };
 
   useEffect(() => {
-    loadMarketplaceItems();
-  });
+    const loadCollections = async () => {
+      await loadMarketplaceItems();
+    };
 
-  if (loading)
+    loadCollections();
+  }, []);
+
+  if (loading) {
     return (
       <div
         style={{
@@ -52,14 +60,20 @@ const Home = ({ marketplace, nft }) => {
         <h2 className="mx-3 my-0">Loading...</h2>
       </div>
     );
+  }
 
   if (items.length === 0) {
-    return <h2 style={{ marginTop: "20px" }}>No Marketplace Items</h2>;
+    return (
+      <h2
+        style={{ marginTop: "20px", display: "flex", justifyContent: "center" }}
+      >
+        No Marketplace Items
+      </h2>
+    );
   }
 
   const renderCollectionCards = () => {
     const collectionMap = {};
-    console.log("items : ", items);
     items.forEach((item) => {
       if (!collectionMap[item.collectionName]) {
         collectionMap[item.collectionName] = [item];
@@ -71,11 +85,10 @@ const Home = ({ marketplace, nft }) => {
     return Object.entries(collectionMap).map(
       ([collectionName, collectionItems]) => {
         const firstItem = collectionItems[0];
-        console.log("collection name ", collectionName);
+
         return (
-          <div className="flex justify-center">
-            {/* <Row xs={1} md={2} lg={5} className="g-4 py-5"> */}
-            <Col key={collectionName}>
+          <div className="flex justify-center" key={collectionName}>
+            <Col>
               <Card>
                 <Card.Img
                   variant="top"
@@ -92,8 +105,6 @@ const Home = ({ marketplace, nft }) => {
                 </Card.Body>
               </Card>
             </Col>
-
-            {/* </Row> */}
           </div>
         );
       }
