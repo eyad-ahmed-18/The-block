@@ -14,6 +14,8 @@ const Navigation = ({ web3Handler, account }) => {
     setIsNavbarOpen(false);
   }, [location]);
 
+  const isAccountConnected = !!account; // Check if there is an account
+
   return (
     <div style={{ marginBottom: "80px" }}>
       <Navbar
@@ -33,16 +35,17 @@ const Navigation = ({ web3Handler, account }) => {
           />
           <Navbar.Collapse id="responsive-navbar-nav" in={isNavbarOpen}>
             <Nav className="me-auto">
-              <Nav.Link as={Link} to="/home" onClick={handleNavbarToggle}>
+              <Nav.Link as={Link} to="/home" onClick={handleNavbarToggle} disabled={!isAccountConnected}>
                 Home
               </Nav.Link>
-              <Nav.Link as={Link} to="/create" onClick={handleNavbarToggle}>
+              <Nav.Link as={Link} to="/create" onClick={handleNavbarToggle} disabled={!isAccountConnected}>
                 Create
               </Nav.Link>
               <Nav.Link
                 as={Link}
                 to="/my-listed-items"
                 onClick={handleNavbarToggle}
+                disabled={!isAccountConnected}
               >
                 My Listed Items
               </Nav.Link>
@@ -50,18 +53,19 @@ const Navigation = ({ web3Handler, account }) => {
                 as={Link}
                 to="/my-purchases"
                 onClick={handleNavbarToggle}
+                disabled={!isAccountConnected}
               >
                 My Purchases
               </Nav.Link>
-              <Nav.Link as={Link} to="/categories" onClick={handleNavbarToggle}>
+              <Nav.Link as={Link} to="/categories" onClick={handleNavbarToggle} disabled={!isAccountConnected}>
                 Sustainability
               </Nav.Link>
-              <Nav.Link as={Link} to="/launchpad" onClick={handleNavbarToggle}>
+              <Nav.Link as={Link} to="/launchpad" onClick={handleNavbarToggle} disabled={!isAccountConnected}>
                 Launchpad
               </Nav.Link>
             </Nav>
             <Nav>
-              {account ? (
+              {isAccountConnected ? (
                 <Nav.Link
                   href={`https://etherscan.io/address/${account}`}
                   target="_blank"
@@ -93,7 +97,6 @@ const Navigation = ({ web3Handler, account }) => {
 };
 
 export default Navigation;
-
 // import { Link, useLocation } from "react-router-dom";
 // import { Navbar, Nav, Button, Container } from "react-bootstrap";
 // import { useState, useEffect } from "react";
