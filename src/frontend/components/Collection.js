@@ -53,6 +53,8 @@ const CollectionPage = ({ marketplace, nft }) => {
 
   if (loading) {
     return (
+      
+
       <div
         style={{
           padding: "1rem 0",
@@ -63,6 +65,7 @@ const CollectionPage = ({ marketplace, nft }) => {
         <Spinner animation="grow" style={{ display: "flex" }} />
         <h2 className="mx-3 my-0">Loading...</h2>
       </div>
+      
     );
   }
 
@@ -76,6 +79,7 @@ const CollectionPage = ({ marketplace, nft }) => {
 
   return (
     <div className="flex justify-center">
+      
       <div className="px-5 container">
         <h1
           style={{
@@ -119,6 +123,7 @@ const CollectionPage = ({ marketplace, nft }) => {
           ))}
         </Row>
       </div>
+      
     </div>
   );
 };

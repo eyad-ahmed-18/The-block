@@ -37,7 +37,7 @@ const Categories = () => {
           available.
         </h4>
         <Row
-          xs={2}
+          xs={1}
           md={2}
           lg={5}
           className="g-4 py-5"

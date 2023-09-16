@@ -76,6 +76,8 @@ contract Marketplace is ReentrancyGuard {
         );
     }
 
+    
+
     function purchaseItem(uint _itemId) external payable nonReentrant {
         uint _totalPrice = getTotalPrice(_itemId);
         Item storage item = items[_itemId];

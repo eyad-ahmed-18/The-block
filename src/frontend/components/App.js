@@ -103,72 +103,72 @@ function App() {
               <p className="mx-3 my-0">Connect your E-Wallet...</p>
             </div>
           ) : ( */}
-            <Routes>
-              <Route
-                path="/"
-                element={<LandingPage marketplace={marketplace} nft={nft} />}
-              />
-              <Route
-                path="/home"
-                element={<Home marketplace={marketplace} nft={nft} />}
-              />
-              <Route
-                path="/create"
-                element={<Create marketplace={marketplace} nft={nft} />}
-              />
-              <Route
-                path="/my-listed-items"
-                element={
-                  <MyListedItems
-                    marketplace={marketplace}
-                    nft={nft}
-                    account={account}
-                  />
-                }
-              />
-              <Route
-                path="/my-purchases"
-                element={
-                  <MyPurchases
-                    marketplace={marketplace}
-                    nft={nft}
-                    account={account}
-                  />
-                }
-              />
-              <Route
-                path="/collection/:collectionName"
-                element={
-                  <CollectionPage
-                    collectionName={collectionName}
-                    marketplace={marketplace}
-                    nft={nft}
-                  />
-                }
-              />
-              <Route path="/launchpad" element={<Launchpad />} />
-              <Route path="/categories" element={<Categories />} />
-              <Route
-                path="/collectibles"
-                element={<Collectibles marketplace={marketplace} nft={nft} />}
-              />
-              <Route
-                path="/coworkingspace"
-                element={<Coworkingspace marketplace={marketplace} nft={nft} />}
-              />
-              <Route
-                path="/skillsharing"
-                element={<Skillsharing marketplace={marketplace} nft={nft} />}
-              />
-              <Route
-                path="/entertainment"
-                element={<Entertainment marketplace={marketplace} nft={nft} />}
-              />
-              <Route
-                path="/nftform"
-                element={<NFTForm marketplace={marketplace} nft={nft} />}
-              />
-            </Routes>
+          <Routes>
+            <Route
+              path="/"
+              element={<LandingPage marketplace={marketplace} nft={nft} />}
+            />
+            <Route
+              path="/home"
+              element={<Home marketplace={marketplace} nft={nft} />}
+            />
+            <Route
+              path="/create"
+              element={<Create marketplace={marketplace} nft={nft} />}
+            />
+            <Route
+              path="/my-listed-items"
+              element={
+                <MyListedItems
+                  marketplace={marketplace}
+                  nft={nft}
+                  account={account}
+                />
+              }
+            />
+            <Route
+              path="/my-purchases"
+              element={
+                <MyPurchases
+                  marketplace={marketplace}
+                  nft={nft}
+                  account={account}
+                />
+              }
+            />
+            <Route
+              path="/collection/:collectionName"
+              element={
+                <CollectionPage
+                  collectionName={collectionName}
+                  marketplace={marketplace}
+                  nft={nft}
+                />
+              }
+            />
+            <Route path="/launchpad" element={<Launchpad />} />
+            <Route path="/categories" element={<Categories />} />
+            <Route
+              path="/collectibles"
+              element={<Collectibles marketplace={marketplace} nft={nft} />}
+            />
+            <Route
+              path="/coworkingspace"
+              element={<Coworkingspace marketplace={marketplace} nft={nft} />}
+            />
+            <Route
+              path="/skillsharing"
+              element={<Skillsharing marketplace={marketplace} nft={nft} />}
+            />
+            <Route
+              path="/entertainment"
+              element={<Entertainment marketplace={marketplace} nft={nft} />}
+            />
+            <Route
+              path="/nftform"
+              element={<NFTForm marketplace={marketplace} nft={nft} />}
+            />
+          </Routes>
           {/* )} */}
         </div>
       </div>

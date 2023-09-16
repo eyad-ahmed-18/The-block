@@ -14,11 +14,11 @@ module.exports = {
   networks: {
     hardhat: {},
     mainnet: {
-      url: "https://mainnet.infura.io/v3/bbd25bb78c3442b9bcae882104805b4a",
+      url: "https://polygon-mainnet.infura.io/v3/bbd25bb78c3442b9bcae882104805b4a",
       accounts: [privateKey],
     },
-    goerli: {
-      url: "https://goerli.infura.io/v3/bbd25bb78c3442b9bcae882104805b4a",
+    mumbai: {
+      url: "https://polygon-mumbai.infura.io/v3/bbd25bb78c3442b9bcae882104805b4a",
       accounts: [privateKey],
     },
   },
